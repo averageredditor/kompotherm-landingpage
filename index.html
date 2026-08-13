@@ -177,9 +177,7 @@
   .fact-hover { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .3s ease, margin-top .3s ease; }
   .fact:hover .fact-hover, .fact:focus-within .fact-hover { max-height: 300px; opacity: 1; margin-top: 14px; }
   .fact-hover .hv-text { font-size: 13px; color: #e8f4fb; margin-bottom: 10px; }
-  .fact-thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
-  .fact-thumbs img { width: 74px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); background: #fff; }
-  .fact-profile { display: block; width: 100%; max-width: 230px; height: 190px; object-fit: cover; object-position: center 42%; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
+  .fact-img { display: block; max-width: 260px; max-height: 220px; width: auto; height: auto; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); background: #fff; }
 
   /* Galerie */
   .galerie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -348,32 +346,37 @@
         <div class="v">18 Standardfarben in witterungsbeständiger Industriequalität.</div>
         <div class="fact-hover">
           <p class="hv-text">Ebenfalls Feinstruktur, Holz und Keramikoberflächen</p>
-          <div class="fact-thumbs">
-            <img src="assets/fact_holz_eiche.jpg" alt="Holzdekor Eiche Natur">
-            <img src="assets/fact_keramik_dolomit.jpg" alt="Keramik Dolomit Grau">
-          </div>
+          <img class="fact-img" src="assets/Div1.png" alt="Pulverbeschichtung – Oberflächen und Farben">
         </div>
       </div>
       <div class="fact glass">
         <div class="k">Echtholz und Keramikoberflächen</div>
         <div class="v">Natürliche Echtholz- und Keramikoberflächen für individuelles Design.</div>
         <div class="fact-hover">
-          <div class="fact-thumbs">
-            <img src="assets/fact_holz_eiche.jpg" alt="Echtholz Oberfläche">
-            <img src="assets/fact_keramik_dolomit.jpg" alt="Keramikoberfläche">
-          </div>
+          <img class="fact-img" src="assets/Div2.png" alt="Echtholz- und Keramikoberfläche">
         </div>
       </div>
       <div class="fact glass">
         <div class="k">Verschiedene Profilsysteme und Sonderanfertigungen</div>
         <div class="v">Individuelle Sonderanfertigungen für jede Einbausituation.</div>
         <div class="fact-hover">
-          <img class="fact-profile" src="assets/fact_profilsystem.jpg" alt="Profilsystem Querschnitt">
+          <img class="fact-img" src="assets/Div3.png" alt="Profilsystem">
         </div>
       </div>
-      <div class="fact glass"><div class="k">Verschiedene Profilsysteme</div><div class="v">Für jede Einbausituation das passende System.</div></div>
-      <div class="fact glass"><div class="k">Eigener Fuhrpark</div><div class="v">Zuverlässige, planbare Anlieferung zu Ihnen.</div></div>
-      <div class="fact glass"><div class="k">Ausstellungsservice</div><div class="v">Unterstützung für Ihre Verkaufs- und Musterausstellung.</div></div>
+      <div class="fact glass">
+        <div class="k">Vordächer und Briefkastensysteme</div>
+        <div class="v">Hauseingänge als Komplettlösung.</div>
+        <div class="fact-hover">
+          <img class="fact-img" src="assets/Div4.png" alt="Vordächer und Briefkastensysteme">
+        </div>
+      </div>
+      <div class="fact glass">
+        <div class="k">Moderne Zutrittssysteme</div>
+        <div class="v">Technische Möglichkeiten sinnvoll integriert.</div>
+        <div class="fact-hover">
+          <img class="fact-img" src="assets/Div5.png" alt="Moderne Zutrittssysteme">
+        </div>
+      </div>
     </div>
   </div>
 </section>
