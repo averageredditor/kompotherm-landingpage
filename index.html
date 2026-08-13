@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KOMPOtherm — Vertriebspartner werden</title>
+<style>
+  :root {
+    --ink: #1c1f23;
+    --ink-soft: #3a3f45;
+    --bg: #f5f3ef;
+    --surface: #ffffff;
+    --surface-2: #ebe8e1;
+    --metal: #8a8d91;
+    --muted: #5c6065;
+    --accent: #b08d57;
+    --accent-dark: #94713f;
+    --accent-soft: #f0e7d8;
+    --border: #ddd9d0;
+    --danger: #b3362f;
+    --ok: #2f6b3f;
+    --radius: 10px;
+    --radius-lg: 16px;
+    --font-display: Georgia, "Times New Roman", serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --maxw: 1120px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-dark); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header {
+    background: var(--ink);
+    color: #f5f3ef;
+    position: sticky; top: 0; z-index: 50;
+    border-bottom: 2px solid var(--accent);
+  }
+  .header-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand { display: flex; flex-direction: column; line-height: 1.1; }
+  .brand .logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; font-weight: 700; }
+  .brand .logo span { color: var(--accent); }
+  .brand .tagline { font-size: 11px; color: #b9bdc2; letter-spacing: 1.4px; text-transform: uppercase; }
+  .header-cta { font-size: 14px; color: #f5f3ef; white-space: nowrap; }
+  .header-cta strong { color: var(--accent); }
+
+  /* Hero */
+  .hero { background: var(--ink); color: #f5f3ef; position: relative; overflow: hidden; }
+  .hero .wrap { padding-top: 72px; padding-bottom: 72px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(34px, 5vw, 56px); line-height: 1.08; margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p.lead { font-size: 18px; color: #c9cdd2; max-width: 30em; margin-bottom: 28px; }
+  .hero .price-flag {
+    display: inline-block; background: var(--accent-soft); color: var(--accent-dark);
+    font-weight: 600; padding: 8px 16px; border-radius: 999px; font-size: 14px; margin-bottom: 24px;
+  }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; font-weight: 600; font-size: 16px; padding: 14px 26px;
+    border-radius: var(--radius); cursor: pointer; border: 1px solid transparent;
+    transition: background .15s, border-color .15s, transform .05s;
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: #1c1f23; }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
+  .btn-ghost { background: transparent; color: #f5f3ef; border-color: #4a5057; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .hero-art { display: flex; flex-direction: column; gap: 16px; }
+  .hero-art .door {
+    aspect-ratio: 4/5; border-radius: var(--radius-lg); background: linear-gradient(160deg, #343a41, #202429);
+    border: 1px solid #4a5057; position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .hero-art .door::before {
+    content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg);
+    background: radial-gradient(circle at 30% 30%, rgba(176,141,87,.22), transparent 60%);
+  }
+  .hero-art .door span { font-family: var(--font-display); font-size: 20px; color: #8a8d91; letter-spacing: 2px; text-transform: uppercase; position: relative; }
+  .hero-art .note { font-size: 13px; color: #8a8d91; text-align: center; }
+
+  /* Merkmale (echte Inhalte aus Flyer) */
+  .facts { padding: 64px 0 40px; }
+  .facts h2 { font-family: var(--font-display); font-size: 30px; margin-bottom: 28px; }
+  .facts h2 em { font-style: normal; color: var(--accent-dark); }
+  .facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .fact {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 18px 20px;
+  }
+  .fact .k { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .fact .v { font-size: 14px; color: var(--muted); }
+
+  /* Aktionspaket */
+  .paket { padding: 24px 0 64px; }
+  .paket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .paket-card { background: var(--ink); color: #e9ebee; border-radius: var(--radius-lg); padding: 32px; }
+  .paket-card h3 { font-family: var(--font-display); font-size: 24px; margin-bottom: 16px; color: var(--accent); }
+  .paket-card ul { list-style: none; }
+  .paket-card li { padding: 8px 0 8px 26px; position: relative; border-bottom: 1px solid #343a41; font-size: 15px; }
+  .paket-card li:last-child { border-bottom: none; }
+  .paket-card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+  .paket-card .price { font-size: 26px; font-weight: 700; color: #fff; margin-top: 18px; }
+  .paket-card .price small { font-size: 14px; font-weight: 400; color: #b9bdc2; }
+
+  /* Formular / Conversion */
+  .contact { padding: 64px 0 72px; background: var(--surface-2); border-top: 1px solid var(--border); }
+  .contact h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 8px; }
+  .contact .sub { color: var(--muted); margin-bottom: 28px; max-width: 46em; }
+  form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  .field-group { margin-bottom: 24px; }
+  .field-group legend, .field-group .lbl { font-weight: 600; font-size: 15px; margin-bottom: 10px; display: block; }
+  .opts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .opt {
+    display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border);
+    border-radius: var(--radius); cursor: pointer; font-size: 15px; transition: border-color .12s, background .12s;
+  }
+  .opt input { accent-color: var(--accent); width: 18px; height: 18px; flex: none; }
+  .opt:hover { border-color: var(--metal); }
+  .opt.checked { border-color: var(--accent); background: var(--accent-soft); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  input[type=text], input[type=tel], input[type=email], textarea {
+    width: 100%; padding: 13px 14px; font-size: 15px; font-family: var(--font-body);
+    border: 1px solid var(--border); border-radius: var(--radius); background: #fff; color: var(--ink);
+  }
+  input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+  textarea { min-height: 96px; resize: vertical; }
+  .req { color: var(--danger); }
+  .hint { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .error-msg { color: var(--danger); font-size: 14px; margin-top: 12px; min-height: 20px; }
+  .btn-submit { width: 100%; font-size: 17px; padding: 16px; margin-top: 8px; }
+  .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+  .success {
+    display: none; background: var(--accent-soft); border: 1px solid var(--accent);
+    border-radius: var(--radius-lg); padding: 32px; text-align: left;
+  }
+  .success h3 { font-family: var(--font-display); font-size: 24px; color: var(--accent-dark); margin-bottom: 8px; }
+  .success p { color: var(--ink-soft); }
+  .success .summary { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-top: 16px; font-size: 14px; }
+
+  /* Direktkontakt */
+  .direct { padding: 64px 0; }
+  .direct h2 { font-family: var(--font-display); font-size: 30px; margin-bottom: 24px; }
+  .direct-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .person { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+  .person .avatar {
+    width: 72px; height: 72px; border-radius: 50%; background: var(--surface-2);
+    border: 2px dashed var(--metal); display: flex; align-items: center; justify-content: center;
+    color: var(--metal); font-size: 12px; text-align: center; margin-bottom: 14px; line-height: 1.2;
+  }
+  .person .name { font-weight: 700; font-size: 16px; }
+  .person .role { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
+  .person a { display: block; font-size: 14px; }
+
+  footer { background: var(--ink); color: #b9bdc2; padding: 40px 0 48px; font-size: 13px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #f5f3ef; font-size: 14px; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+  footer p { margin-bottom: 6px; }
+  footer a { color: #b9bdc2; }
+  .legal { margin-top: 32px; padding-top: 16px; border-top: 1px solid #343a41; color: #6d7278; font-size: 12px; }
+
+  @media (max-width: 860px) {
+    .hero .wrap { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 48px; }
+    .hero-art { display: none; }
+    .facts-grid { grid-template-columns: 1fr 1fr; }
+    .paket-grid { grid-template-columns: 1fr; }
+    .opts { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .direct-grid { grid-template-columns: 1fr; }
+    footer .cols { grid-template-columns: 1fr; }
+    .header-cta { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">KOMPO<span>therm</span></div>
+      <div class="tagline">Aluminium-Haustüren der Extraklasse</div>
+    </div>
+    <div class="header-cta">Direkt anrufen: <strong>+49 5246 704-0</strong></div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="price-flag">Aktionsmodell ab 3.380&nbsp;€ + 19% USt.</span>
+      <h1>Vertriebspartner in <em>Ihrer Region</em> gesucht.</h1>
+      <p class="lead">
+        Sie führen Fenster- und Türen-Handwerk und suchen ein Aluminium-Türprogramm,
+        das sich verkauft? Werden Sie KOMPOtherm-Partner und profitieren Sie vom
+        Händlerrabatt, eigener Belieferung und Ausstellungsservice.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#anfrage">Jetzt Händlerrabatt erfragen</a>
+        <a class="btn btn-ghost" href="#kontakt">Direkt anrufen</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="door"><span>Produktbild<br>Platzhalter</span></div>
+      <div class="note">Türbild wird durch echtes Produktfoto ersetzt.</div>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="wrap">
+    <h2>Warum KOMPOtherm? <em>Made in Germany, seit 1984.</em></h2>
+    <div class="facts-grid">
+      <div class="fact"><div class="k">Pulverbeschichtung</div><div class="v">Oberfläche in Industriequalität, witterungsbeständig.</div></div>
+      <div class="fact"><div class="k">18 Standardfarben</div><div class="v">Breites Farbspektrum ab Lager, ohne Sonderzuschlag.</div></div>
+      <div class="fact"><div class="k">Füllungs- &amp; Sonderbau</div><div class="v">Individuelle Füllungen und Sonderanfertigungen möglich.</div></div>
+      <div class="fact"><div class="k">Verschiedene Profilsysteme</div><div class="v">Für jede Einbausituation das passende System.</div></div>
+      <div class="fact"><div class="k">Eigener Fuhrpark seit 1984</div><div class="v">Zuverlässige, planbare Anlieferung zu Ihnen.</div></div>
+      <div class="fact"><div class="k">Ausstellungsservice</div><div class="v">Unterstützung für Ihre Verkaufs- und Musterausstellung.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="paket">
+  <div class="wrap paket-grid">
+    <div class="paket-card">
+      <h3>Ausstattung im Preis enthalten</h3>
+      <ul>
+        <li>Beidseitig flügelüberdeckende Ausführung</li>
+        <li>Automatik-Verriegelung</li>
+        <li>Innendrücker Edelstahl</li>
+        <li>Außenhandhabe Edelstahl</li>
+      </ul>
+      <div class="price">3.380&nbsp;€ <small>empf. VK + 19% USt.</small></div>
+    </div>
+    <div class="paket-card">
+      <h3>Ihre Marge als Partner</h3>
+      <p style="color:#c9cdd2; margin-bottom:14px;">
+        Als Vertriebspartner erhalten Sie einen festen Händlerrabatt auf die
+        empfohlene Verkaufspreise. Konkrete Konditionen klären wir direkt mit Ihnen.
+      </p>
+      <ul>
+        <li>Feste Händlerkonditionen</li>
+        <li>Direkte Ansprechpartner im Vertrieb</li>
+        <li>Angebotsabteilung für Ihre Anfragen</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="anfrage">
+  <div class="wrap">
+    <h2>Händlerrabatt anfragen</h2>
+    <p class="sub">
+      Wählen Sie aus, wofür Sie sich interessieren, und hinterlassen Sie Ihre
+      Kontaktdaten. Wir melden uns mit den Konditionen bei Ihnen.
+    </p>
+
+    <form id="anfrage-form" novalidate>
+      <fieldset class="field-group" style="border:none;">
+        <legend>Woran haben Sie Interesse? <span class="req">*</span></legend>
+        <div class="opts">
+          <label class="opt"><input type="checkbox" name="interesse" value="Haustüren Standard (18 Farben)">Haustüren Standard</label>
+          <label class="opt"><input type="checkbox" name="interesse" value="Füllungs- und Sonderbau">Füllungs- &amp; Sonderbau</label>
+          <label class="opt"><input type="checkbox" name="interesse" value="Profilsysteme / Technik">Profilsysteme / Technik</label>
+          <label class="opt"><input type="checkbox" name="interesse" value="Händlerkonditionen">Händlerkonditionen</label>
+          <label class="opt"><input type="checkbox" name="interesse" value="Ausstellungsservice">Ausstellungsservice</label>
+          <label class="opt"><input type="checkbox" name="interesse" value="Muster / Verkaufshilfen">Muster / Verkaufshilfen</label>
+        </div>
+      </fieldset>
+
+      <div class="grid-2">
+        <div class="field-group">
+          <label class="lbl" for="firma">Firma <span class="req">*</span></label>
+          <input type="text" id="firma" name="firma" autocomplete="organization" required>
+        </div>
+        <div class="field-group">
+          <label class="lbl" for="name">Ansprechpartner <span class="req">*</span></label>
+          <input type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field-group">
+          <label class="lbl" for="ort">PLZ / Ort <span class="req">*</span></label>
+          <input type="text" id="ort" name="ort" autocomplete="postal-code" required>
+        </div>
+        <div class="field-group">
+          <label class="lbl" for="tel">Telefon <span class="req">*</span></label>
+          <input type="tel" id="tel" name="tel" autocomplete="tel" required>
+        </div>
+      </div>
+      <div class="field-group">
+        <label class="lbl" for="email">E-Mail <span class="req">*</span></label>
+        <input type="email" id="email" name="email" autocomplete="email" required>
+      </div>
+      <div class="field-group">
+        <label class="lbl" for="msg">Nachricht (optional)</label>
+        <textarea id="msg" name="msg" placeholder="z.B. Region, gewünschtes Einzugsgebiet, bestehender Kundenstamm …"></textarea>
+      </div>
+
+      <div class="error-msg" id="error-msg" role="alert"></div>
+      <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">Händlerrabatt anfragen</button>
+      <p class="hint">Mit dem Absenden stimmen Sie der Kontaktaufnahme durch KOMPOtherm zu. Ihre Daten werden nur zur Bearbeitung der Anfrage verwendet.</p>
+    </form>
+
+    <div class="success" id="success" role="status">
+      <h3>Anfrage eingegangen</h3>
+      <p>Vielen Dank — wir melden uns mit den Händlerkonditionen bei Ihnen.</p>
+      <div class="summary" id="summary"></div>
+    </div>
+  </div>
+</section>
+
+<section class="direct" id="kontakt">
+  <div class="wrap">
+    <h2>Ihre direkten Ansprechpartner</h2>
+    <div class="direct-grid">
+      <div class="person">
+        <div class="avatar">Foto<br>Platzhalter</div>
+        <div class="name">Marius Schulze</div>
+        <div class="role">Vertrieb</div>
+        <a href="tel:+4915732101285">Mobil 0157 3210 1285</a>
+        <a href="mailto:kompo.schulze@gmx.de">kompo.schulze@gmx.de</a>
+      </div>
+      <div class="person">
+        <div class="avatar">Foto<br>Platzhalter</div>
+        <div class="name">Martin Bohne</div>
+        <div class="role">Angebotsabteilung</div>
+        <a href="tel:+495246704270">Tel. +49 5246 704-270</a>
+        <a href="mailto:Martin.Bohne@kompotherm.de">Martin.Bohne@kompotherm.de</a>
+      </div>
+      <div class="person">
+        <div class="avatar">Foto<br>Platzhalter</div>
+        <div class="name">Service &amp; Kundendienst</div>
+        <div class="role">Zentrale Verl</div>
+        <a href="tel:+4952467040">Tel. +49 5246 704-0</a>
+        <a href="https://wa.me/49524670404">WhatsApp +49 5246 704-04</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>KOMPOtherm</h4>
+        <p>Aluminium-Haustüren der Extraklasse</p>
+        <p>Hartwig &amp; Führer GmbH &amp; Co. KG</p>
+        <p>Industriegebiet Sürenheide<br>Berensweg 10 – 12<br>D-33415 Verl</p>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <p>Zentrale: +49 (0) 5246 704-0</p>
+        <p>Fax: +49 (0) 5246 704-44</p>
+        <p><a href="mailto:kontakt@kompotherm.de">kontakt@kompotherm.de</a></p>
+        <p><a href="https://www.kompotherm.de">www.kompotherm.de</a></p>
+      </div>
+      <div>
+        <h4>Social</h4>
+        <p><a href="https://www.instagram.com/kompotherm_haustueren/">instagram.com/kompotherm_haustueren</a></p>
+        <p><a href="https://www.instagram.com/kompo.schulze">instagram.com/kompo.schulze</a></p>
+        <p><a href="https://youtu.be/0I9944Q35TI">YouTube</a></p>
+      </div>
+    </div>
+    <div class="legal">
+      Prototyp — nicht produktiv. QR-Code-/Link-Ziel im Flyer („www. link …“) ist noch offen und wird durch die finale Landingpage-URL ersetzt.
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('anfrage-form');
+    var err = document.getElementById('error-msg');
+    var success = document.getElementById('success');
+    var summary = document.getElementById('summary');
+    var submitBtn = document.getElementById('submit-btn');
+
+    // Checkbox-Optik
+    var opts = document.querySelectorAll('.opt input');
+    opts.forEach(function (c) {
+      c.addEventListener('change', function () {
+        c.closest('.opt').classList.toggle('checked', c.checked);
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.textContent = '';
+
+      var interesse = Array.prototype.slice.call(
+        document.querySelectorAll('input[name=interesse]:checked')
+      ).map(function (c) { return c.value; });
+
+      if (interesse.length === 0) {
+        err.textContent = 'Bitte wählen Sie mindestens einen Interessenspunkt aus.';
+        return;
+      }
+
+      var pflicht = ['firma', 'name', 'ort', 'tel', 'email'];
+      for (var i = 0; i < pflicht.length; i++) {
+        var el = document.getElementById(pflicht[i]);
+        if (!el.value.trim()) {
+          err.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+          el.focus();
+          return;
+        }
+      }
+      var emailEl = document.getElementById('email');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+        err.textContent = 'Bitte eine gültige E-Mail-Adresse angeben.';
+        emailEl.focus();
+        return;
+      }
+
+      // Prototyp: Erfolgsansicht mit Zusammenfassung (kein Backend).
+      var zeilen = [
+        ['Firma', document.getElementById('firma').value.trim()],
+        ['Ansprechpartner', document.getElementById('name').value.trim()],
+        ['PLZ / Ort', document.getElementById('ort').value.trim()],
+        ['Telefon', document.getElementById('tel').value.trim()],
+        ['E-Mail', document.getElementById('email').value.trim()],
+        ['Interesse', interesse.join(', ')]
+      ];
+      if (document.getElementById('msg').value.trim()) {
+        zeilen.push(['Nachricht', document.getElementById('msg').value.trim()]);
+      }
+      summary.innerHTML = zeilen.map(function (z) {
+        return '<strong>' + z[0] + ':</strong> ' + z[1];
+      }).join('<br>');
+
+      form.style.display = 'none';
+      success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+</script>
+</body>
+</html>
