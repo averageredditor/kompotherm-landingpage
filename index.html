@@ -107,25 +107,33 @@
   .btn-primary:hover { background: #9e242c; color: #fff; }
   .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
   .btn-outline:hover { border-color: var(--kt-light); color: var(--kt-light); }
-  .hero-img { position: relative; overflow: hidden; border-radius: 6px; }
-  .hero-img img {
-    width: 100%; display: block; border-radius: 6px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.35);
-    animation: kenburns 22s ease-in-out infinite;
-    transform-origin: 50% 50%;
-    will-change: transform;
+  .hero-img { position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 4/3; }
+  .hero-img .slide {
+    position: absolute; inset: 0; opacity: 0;
+    animation: herofade 30s ease-in-out infinite;
   }
-  @keyframes kenburns {
-    0%   { transform: scale(1) translate(0, 0); }
-    50%  { transform: scale(1.15) translate(-1.5%, -1%); }
-    100% { transform: scale(1) translate(0, 0); }
+  .hero-img .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-img .slide:nth-child(1) { animation-delay: 0s; }
+  .hero-img .slide:nth-child(2) { animation-delay: 5s; }
+  .hero-img .slide:nth-child(3) { animation-delay: 10s; }
+  .hero-img .slide:nth-child(4) { animation-delay: 15s; }
+  .hero-img .slide:nth-child(5) { animation-delay: 20s; }
+  .hero-img .slide:nth-child(6) { animation-delay: 25s; }
+  @keyframes herofade {
+    0%       { opacity: 0; }
+    3%       { opacity: 1; }
+    16.666%  { opacity: 1; }
+    19.666%  { opacity: 0; }
+    100%     { opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .hero-img img { animation: none; }
+    .hero-img .slide { animation: none; opacity: 0; }
+    .hero-img .slide:nth-child(1) { opacity: 1; }
   }
   .hero-img .badge {
     position: absolute; bottom: 16px; left: 16px; background: rgba(0,51,94,.92); color: #fff;
     font-family: var(--font-head); font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: var(--radius);
+    z-index: 5;
   }
 
   /* ===== Merkmale ===== */
@@ -295,7 +303,12 @@
       </div>
     </div>
     <div class="hero-img">
-      <img src="assets/tuer_1_opt.jpg" alt="KOMPOtherm Haustür">
+      <div class="slide"><img src="assets/tuer_1_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/tuer_2_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/tuer_3_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/tuer_4_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/tuer_5_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/tuer_6_opt.jpg" alt="KOMPOtherm Haustür"></div>
       <div class="badge">KOMPOtherm® Aluminium-Haustüren</div>
     </div>
   </div>
