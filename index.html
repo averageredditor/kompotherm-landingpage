@@ -43,43 +43,6 @@
   a:hover { color: var(--kt-light); }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
-  /* ===== Fullscreen-Background-Slideshow ===== */
-  .bg-slideshow {
-    position: fixed; inset: 0; z-index: 0; overflow: hidden;
-    background: var(--kt-dark-2);
-  }
-  .bg-slideshow .slide {
-    position: absolute; inset: 0; opacity: 0;
-    animation: bgfade 50s ease-in-out infinite;
-  }
-  .bg-slideshow .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .bg-slideshow .slide:nth-child(1)  { animation-delay: 0s; }
-  .bg-slideshow .slide:nth-child(2)  { animation-delay: 5s; }
-  .bg-slideshow .slide:nth-child(3)  { animation-delay: 10s; }
-  .bg-slideshow .slide:nth-child(4)  { animation-delay: 15s; }
-  .bg-slideshow .slide:nth-child(5)  { animation-delay: 20s; }
-  .bg-slideshow .slide:nth-child(6)  { animation-delay: 25s; }
-  .bg-slideshow .slide:nth-child(7)  { animation-delay: 30s; }
-  .bg-slideshow .slide:nth-child(8)  { animation-delay: 35s; }
-  .bg-slideshow .slide:nth-child(9)  { animation-delay: 40s; }
-  .bg-slideshow .slide:nth-child(10) { animation-delay: 45s; }
-  @keyframes bgfade {
-    0%       { opacity: 0; }
-    2%       { opacity: 1; }
-    10%      { opacity: 1; }
-    12%      { opacity: 0; }
-    100%     { opacity: 0; }
-  }
-  /* Abdunkeln für Lesbarkeit + dezenter Blauton */
-  .bg-slideshow::after {
-    content: ""; position: absolute; inset: 0; z-index: 1;
-    background: linear-gradient(180deg, rgba(0,26,47,0.72) 0%, rgba(0,51,94,0.78) 50%, rgba(0,26,47,0.85) 100%);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bg-slideshow .slide { animation: none; opacity: 0; }
-    .bg-slideshow .slide:nth-child(1) { opacity: 1; }
-  }
-
   /* ===== Glass-Widget Basis ===== */
   .glass {
     background: var(--glass-bg);
@@ -303,20 +266,6 @@
 </style>
 </head>
 <body>
-
-<!-- Fullscreen Background Slideshow -->
-<div class="bg-slideshow" aria-hidden="true">
-  <div class="slide"><img src="assets/slides/slide_01.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_02.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_03.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_04.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_05.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_06.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_07.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_08.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_09.jpg" alt=""></div>
-  <div class="slide"><img src="assets/slides/slide_10.jpg" alt=""></div>
-</div>
 
 <header>
   <div class="topbar">
