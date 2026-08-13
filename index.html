@@ -174,6 +174,12 @@
   .fact .k { font-family: var(--font-head); font-weight: 700; font-size: 17px; color: #fff; margin-bottom: 6px; }
   .fact .k::before { content: "—"; color: var(--kt-light); margin-right: 8px; font-weight: 400; }
   .fact .v { font-size: 14px; color: #c4d4e0; }
+  .fact-hover { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .3s ease, margin-top .3s ease; }
+  .fact:hover .fact-hover, .fact:focus-within .fact-hover { max-height: 300px; opacity: 1; margin-top: 14px; }
+  .fact-hover .hv-text { font-size: 13px; color: #e8f4fb; margin-bottom: 10px; }
+  .fact-thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
+  .fact-thumbs img { width: 74px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); background: #fff; }
+  .fact-profile { display: block; width: 100%; max-width: 230px; height: 190px; object-fit: cover; object-position: center 42%; border-radius: 8px; border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow); }
 
   /* Galerie */
   .galerie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
@@ -337,9 +343,34 @@
     <h2 class="sec">Qualität, die sich verkauft</h2>
     <p class="sub">Made in Germany — seit 40 Jahren Aluminium-Haustüren der Extraklasse.</p>
     <div class="facts-grid">
-      <div class="fact glass"><div class="k">Pulverbeschichtung</div><div class="v">Oberfläche in Industriequalität, witterungsbeständig.</div></div>
-      <div class="fact glass"><div class="k">18 Standardfarben</div><div class="v">Breites Farbspektrum ab Lager, ohne Sonderzuschlag.</div></div>
-      <div class="fact glass"><div class="k">Füllungs- &amp; Sonderbau</div><div class="v">Individuelle Füllungen und Sonderanfertigungen möglich.</div></div>
+      <div class="fact glass">
+        <div class="k">Hauseigene Pulverbeschichtung</div>
+        <div class="v">18 Standardfarben in witterungsbeständiger Industriequalität.</div>
+        <div class="fact-hover">
+          <p class="hv-text">Ebenfalls Feinstruktur, Holz und Keramikoberflächen</p>
+          <div class="fact-thumbs">
+            <img src="assets/fact_holz_eiche.jpg" alt="Holzdekor Eiche Natur">
+            <img src="assets/fact_keramik_dolomit.jpg" alt="Keramik Dolomit Grau">
+          </div>
+        </div>
+      </div>
+      <div class="fact glass">
+        <div class="k">Echtholz und Keramikoberflächen</div>
+        <div class="v">Natürliche Echtholz- und Keramikoberflächen für individuelles Design.</div>
+        <div class="fact-hover">
+          <div class="fact-thumbs">
+            <img src="assets/fact_holz_eiche.jpg" alt="Echtholz Oberfläche">
+            <img src="assets/fact_keramik_dolomit.jpg" alt="Keramikoberfläche">
+          </div>
+        </div>
+      </div>
+      <div class="fact glass">
+        <div class="k">Verschiedene Profilsysteme und Sonderanfertigungen</div>
+        <div class="v">Individuelle Sonderanfertigungen für jede Einbausituation.</div>
+        <div class="fact-hover">
+          <img class="fact-profile" src="assets/fact_profilsystem.jpg" alt="Profilsystem Querschnitt">
+        </div>
+      </div>
       <div class="fact glass"><div class="k">Verschiedene Profilsysteme</div><div class="v">Für jede Einbausituation das passende System.</div></div>
       <div class="fact glass"><div class="k">Eigener Fuhrpark</div><div class="v">Zuverlässige, planbare Anlieferung zu Ihnen.</div></div>
       <div class="fact glass"><div class="k">Ausstellungsservice</div><div class="v">Unterstützung für Ihre Verkaufs- und Musterausstellung.</div></div>
