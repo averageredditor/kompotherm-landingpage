@@ -107,8 +107,22 @@
   .btn-primary:hover { background: #9e242c; color: #fff; }
   .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
   .btn-outline:hover { border-color: var(--kt-light); color: var(--kt-light); }
-  .hero-img { position: relative; }
-  .hero-img img { width: 100%; border-radius: 6px; display: block; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .hero-img { position: relative; overflow: hidden; border-radius: 6px; }
+  .hero-img img {
+    width: 100%; display: block; border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    animation: kenburns 22s ease-in-out infinite;
+    transform-origin: 50% 50%;
+    will-change: transform;
+  }
+  @keyframes kenburns {
+    0%   { transform: scale(1) translate(0, 0); }
+    50%  { transform: scale(1.15) translate(-1.5%, -1%); }
+    100% { transform: scale(1) translate(0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-img img { animation: none; }
+  }
   .hero-img .badge {
     position: absolute; bottom: 16px; left: 16px; background: rgba(0,51,94,.92); color: #fff;
     font-family: var(--font-head); font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: var(--radius);
