@@ -3,240 +3,323 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KOMPOtherm — Vertriebspartner werden</title>
+<title>Vertriebspartner werden | KOMPOtherm®</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1c1f23;
-    --ink-soft: #3a3f45;
-    --bg: #f5f3ef;
-    --surface: #ffffff;
-    --surface-2: #ebe8e1;
-    --metal: #8a8d91;
-    --muted: #5c6065;
-    --accent: #b08d57;
-    --accent-dark: #94713f;
-    --accent-soft: #f0e7d8;
-    --border: #ddd9d0;
-    --danger: #b3362f;
-    --ok: #2f6b3f;
-    --radius: 10px;
-    --radius-lg: 16px;
-    --font-display: Georgia, "Times New Roman", serif;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --maxw: 1120px;
+    --kt-dark: #00335e;      /* Primärblau KOMPOtherm */
+    --kt-dark-2: #001a2f;    /* dunkler für Verläufe */
+    --kt-mid: #005282;
+    --kt-light: #00b1eb;     /* Hellblau / Cyan Akzent */
+    --kt-red: #be2c35;       /* Rot für CTA */
+    --kt-orange: #ffae00;
+    --kt-ink: #0a0a0a;
+    --kt-gray: #646464;
+    --kt-border: #e6e6e6;
+    --kt-bg: #fefefe;
+    --font-head: "Catamaran", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    --font-body: "Lato", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    --maxw: 1200px;
+    --radius: 4px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
     font-family: var(--font-body);
-    color: var(--ink);
-    background: var(--bg);
-    line-height: 1.55;
+    color: var(--kt-ink);
+    background: var(--kt-bg);
+    line-height: 1.6;
+    font-weight: 300;
     -webkit-font-smoothing: antialiased;
   }
-  a { color: var(--accent-dark); text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  a { color: var(--kt-dark); text-decoration: none; }
+  a:hover { color: var(--kt-light); }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
-  /* Header */
+  /* ===== Header (wie kompotherm.de) ===== */
   header {
-    background: var(--ink);
-    color: #f5f3ef;
-    position: sticky; top: 0; z-index: 50;
-    border-bottom: 2px solid var(--accent);
+    background: #fff;
+    border-bottom: 1px solid var(--kt-border);
+    position: sticky; top: 0; z-index: 100;
   }
+  .topbar {
+    background: var(--kt-dark);
+    color: #cfe0ee; font-size: 13px; padding: 6px 0;
+  }
+  .topbar .wrap { display: flex; justify-content: space-between; align-items: center; }
+  .topbar a { color: #cfe0ee; }
+  .topbar a:hover { color: #fff; }
+  .topbar .right { display: flex; gap: 20px; }
   .header-inner {
-    max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    max-width: var(--maxw); margin: 0 auto; padding: 10px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
   }
-  .brand { display: flex; flex-direction: column; line-height: 1.1; }
-  .brand .logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.5px; font-weight: 700; }
-  .brand .logo span { color: var(--accent); }
-  .brand .tagline { font-size: 11px; color: #b9bdc2; letter-spacing: 1.4px; text-transform: uppercase; }
-  .header-cta { font-size: 14px; color: #f5f3ef; white-space: nowrap; }
-  .header-cta strong { color: var(--accent); }
+  .logo img { height: 54px; width: auto; display: block; }
+  nav.main { display: flex; gap: 2px; }
+  nav.main a {
+    font-family: var(--font-head); font-weight: 600; font-size: 15px;
+    color: var(--kt-dark); padding: 10px 14px; text-transform: uppercase; letter-spacing: .3px;
+    border-bottom: 2px solid transparent; transition: border-color .15s, color .15s;
+  }
+  nav.main a:hover { color: var(--kt-light); border-bottom-color: var(--kt-light); }
+  .header-tools { display: flex; gap: 14px; align-items: center; }
+  .partner-login {
+    font-family: var(--font-head); font-weight: 700; font-size: 14px;
+    background: var(--kt-red); color: #fff; padding: 9px 18px; border-radius: var(--radius);
+    text-transform: uppercase; letter-spacing: .3px;
+  }
+  .partner-login:hover { background: #9e242c; color: #fff; }
 
-  /* Hero */
-  .hero { background: var(--ink); color: #f5f3ef; position: relative; overflow: hidden; }
-  .hero .wrap { padding-top: 72px; padding-bottom: 72px; display: grid; grid-template-columns: 1.25fr 1fr; gap: 48px; align-items: center; }
+  /* ===== Hero ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--kt-dark) 0%, var(--kt-dark-2) 100%);
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .hero .wrap {
+    padding-top: 56px; padding-bottom: 56px;
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero .eyebrow {
+    display: inline-block; background: rgba(0,177,235,.15); color: var(--kt-light);
+    font-family: var(--font-head); font-weight: 600; font-size: 13px; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+  }
   .hero h1 {
-    font-family: var(--font-display); font-weight: 700;
-    font-size: clamp(34px, 5vw, 56px); line-height: 1.08; margin-bottom: 20px;
+    font-family: var(--font-head); font-weight: 800;
+    font-size: clamp(32px, 4.5vw, 52px); line-height: 1.1; margin-bottom: 18px;
   }
-  .hero h1 em { font-style: normal; color: var(--accent); }
-  .hero p.lead { font-size: 18px; color: #c9cdd2; max-width: 30em; margin-bottom: 28px; }
-  .hero .price-flag {
-    display: inline-block; background: var(--accent-soft); color: var(--accent-dark);
-    font-weight: 600; padding: 8px 16px; border-radius: 999px; font-size: 14px; margin-bottom: 24px;
+  .hero h1 span { color: var(--kt-light); }
+  .hero p.lead { font-size: 18px; color: #cfe0ee; max-width: 32em; margin-bottom: 26px; font-weight: 300; }
+  .price-flag {
+    display: inline-block; background: var(--kt-orange); color: #1a1a1a;
+    font-family: var(--font-head); font-weight: 700; padding: 8px 18px; border-radius: var(--radius);
+    font-size: 15px; margin-bottom: 24px;
   }
-  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
   .btn {
-    display: inline-block; font-weight: 600; font-size: 16px; padding: 14px 26px;
-    border-radius: var(--radius); cursor: pointer; border: 1px solid transparent;
-    transition: background .15s, border-color .15s, transform .05s;
+    display: inline-block; font-family: var(--font-head); font-weight: 700; font-size: 16px;
+    padding: 14px 28px; border-radius: var(--radius); cursor: pointer; border: 2px solid transparent;
+    transition: background .15s, border-color .15s, color .15s; text-transform: uppercase; letter-spacing: .4px;
   }
-  .btn:active { transform: translateY(1px); }
-  .btn-primary { background: var(--accent); color: #1c1f23; }
-  .btn-primary:hover { background: var(--accent-dark); color: #fff; text-decoration: none; }
-  .btn-ghost { background: transparent; color: #f5f3ef; border-color: #4a5057; }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
-  .hero-art { display: flex; flex-direction: column; gap: 16px; }
-  .hero-art .door {
-    aspect-ratio: 4/5; border-radius: var(--radius-lg); background: linear-gradient(160deg, #343a41, #202429);
-    border: 1px solid #4a5057; position: relative; display: flex; align-items: center; justify-content: center;
+  .btn-primary { background: var(--kt-red); color: #fff; }
+  .btn-primary:hover { background: #9e242c; color: #fff; }
+  .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+  .btn-outline:hover { border-color: var(--kt-light); color: var(--kt-light); }
+  .hero-img { position: relative; }
+  .hero-img img { width: 100%; border-radius: 6px; display: block; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .hero-img .badge {
+    position: absolute; bottom: 16px; left: 16px; background: rgba(0,51,94,.92); color: #fff;
+    font-family: var(--font-head); font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: var(--radius);
   }
-  .hero-art .door::before {
-    content: ""; position: absolute; inset: 0; border-radius: var(--radius-lg);
-    background: radial-gradient(circle at 30% 30%, rgba(176,141,87,.22), transparent 60%);
-  }
-  .hero-art .door span { font-family: var(--font-display); font-size: 20px; color: #8a8d91; letter-spacing: 2px; text-transform: uppercase; position: relative; }
-  .hero-art .note { font-size: 13px; color: #8a8d91; text-align: center; }
 
-  /* Merkmale (echte Inhalte aus Flyer) */
-  .facts { padding: 64px 0 40px; }
-  .facts h2 { font-family: var(--font-display); font-size: 30px; margin-bottom: 28px; }
-  .facts h2 em { font-style: normal; color: var(--accent-dark); }
-  .facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  /* ===== Merkmale ===== */
+  .facts { padding: 60px 0 40px; }
+  .facts h2 { font-family: var(--font-head); font-weight: 700; font-size: 30px; margin-bottom: 6px; color: var(--kt-dark); }
+  .facts .sub { color: var(--kt-gray); margin-bottom: 30px; }
+  .facts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
   .fact {
-    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 18px 20px;
+    border: 1px solid var(--kt-border); border-radius: var(--radius); padding: 22px;
+    border-top: 3px solid var(--kt-light); background: #fff;
   }
-  .fact .k { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
-  .fact .v { font-size: 14px; color: var(--muted); }
+  .fact .k { font-family: var(--font-head); font-weight: 700; font-size: 17px; color: var(--kt-dark); margin-bottom: 6px; }
+  .fact .v { font-size: 14px; color: var(--kt-gray); }
 
-  /* Aktionspaket */
-  .paket { padding: 24px 0 64px; }
-  .paket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  .paket-card { background: var(--ink); color: #e9ebee; border-radius: var(--radius-lg); padding: 32px; }
-  .paket-card h3 { font-family: var(--font-display); font-size: 24px; margin-bottom: 16px; color: var(--accent); }
+  /* ===== Produktgalerie (echte Türbilder) ===== */
+  .galerie { padding: 40px 0 60px; background: #f4f7fa; }
+  .galerie h2 { font-family: var(--font-head); font-weight: 700; font-size: 30px; color: var(--kt-dark); margin-bottom: 6px; }
+  .galerie .sub { color: var(--kt-gray); margin-bottom: 28px; }
+  .galerie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .galerie-item { position: relative; overflow: hidden; border-radius: var(--radius); background: #fff; border: 1px solid var(--kt-border); }
+  .galerie-item img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; transition: transform .3s; }
+  .galerie-item:hover img { transform: scale(1.04); }
+  .galerie-item .cap {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 14px;
+    background: linear-gradient(transparent, rgba(0,51,94,.85)); color: #fff;
+    font-family: var(--font-head); font-weight: 600; font-size: 14px;
+  }
+
+  /* ===== Aktionspaket ===== */
+  .paket { padding: 60px 0; }
+  .paket-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .paket-card { border-radius: 6px; padding: 34px; }
+  .paket-card.dark { background: var(--kt-dark); color: #fff; }
+  .paket-card.light { background: #fff; border: 1px solid var(--kt-border); }
+  .paket-card h3 { font-family: var(--font-head); font-weight: 700; font-size: 24px; margin-bottom: 16px; }
+  .paket-card.dark h3 { color: var(--kt-light); }
+  .paket-card.light h3 { color: var(--kt-dark); }
   .paket-card ul { list-style: none; }
-  .paket-card li { padding: 8px 0 8px 26px; position: relative; border-bottom: 1px solid #343a41; font-size: 15px; }
+  .paket-card li { padding: 8px 0 8px 24px; position: relative; font-size: 15px; border-bottom: 1px solid rgba(255,255,255,.1); }
+  .paket-card.light li { border-bottom-color: var(--kt-border); }
   .paket-card li:last-child { border-bottom: none; }
-  .paket-card li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
-  .paket-card .price { font-size: 26px; font-weight: 700; color: #fff; margin-top: 18px; }
-  .paket-card .price small { font-size: 14px; font-weight: 400; color: #b9bdc2; }
+  .paket-card.dark li::before { content: "›"; position: absolute; left: 4px; color: var(--kt-light); font-weight: 700; }
+  .paket-card.light li::before { content: "›"; position: absolute; left: 4px; color: var(--kt-mid); font-weight: 700; }
+  .paket-card .price { font-size: 28px; font-weight: 700; margin-top: 18px; }
+  .paket-card.dark .price { color: var(--kt-orange); }
+  .paket-card.light .price { color: var(--kt-red); }
+  .paket-card .price small { font-size: 14px; font-weight: 400; opacity: .75; }
 
-  /* Formular / Conversion */
-  .contact { padding: 64px 0 72px; background: var(--surface-2); border-top: 1px solid var(--border); }
-  .contact h2 { font-family: var(--font-display); font-size: 32px; margin-bottom: 8px; }
-  .contact .sub { color: var(--muted); margin-bottom: 28px; max-width: 46em; }
-  form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px; }
+  /* ===== Formular ===== */
+  .contact { padding: 60px 0 70px; background: #f4f7fa; border-top: 1px solid var(--kt-border); }
+  .contact h2 { font-family: var(--font-head); font-weight: 700; font-size: 32px; color: var(--kt-dark); margin-bottom: 8px; }
+  .contact .sub { color: var(--kt-gray); margin-bottom: 28px; max-width: 46em; }
+  form { background: #fff; border: 1px solid var(--kt-border); border-radius: 6px; padding: 34px; }
   .field-group { margin-bottom: 24px; }
-  .field-group legend, .field-group .lbl { font-weight: 600; font-size: 15px; margin-bottom: 10px; display: block; }
+  .field-group legend, .field-group .lbl { font-family: var(--font-head); font-weight: 700; font-size: 15px; color: var(--kt-dark); margin-bottom: 10px; display: block; }
   .opts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .opt {
-    display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border);
-    border-radius: var(--radius); cursor: pointer; font-size: 15px; transition: border-color .12s, background .12s;
+    display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--kt-border);
+    border-radius: var(--radius); cursor: pointer; font-size: 15px; transition: border-color .12s, background .12s; background: #fff;
   }
-  .opt input { accent-color: var(--accent); width: 18px; height: 18px; flex: none; }
-  .opt:hover { border-color: var(--metal); }
-  .opt.checked { border-color: var(--accent); background: var(--accent-soft); }
+  .opt input { accent-color: var(--kt-mid); width: 18px; height: 18px; flex: none; }
+  .opt:hover { border-color: var(--kt-mid); }
+  .opt.checked { border-color: var(--kt-light); background: #f0f9fd; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   input[type=text], input[type=tel], input[type=email], textarea {
     width: 100%; padding: 13px 14px; font-size: 15px; font-family: var(--font-body);
-    border: 1px solid var(--border); border-radius: var(--radius); background: #fff; color: var(--ink);
+    border: 1px solid var(--kt-border); border-radius: var(--radius); background: #fff; color: var(--kt-ink);
   }
-  input:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+  input:focus, textarea:focus { outline: 2px solid var(--kt-light); outline-offset: 0; border-color: var(--kt-light); }
   textarea { min-height: 96px; resize: vertical; }
-  .req { color: var(--danger); }
-  .hint { font-size: 13px; color: var(--muted); margin-top: 6px; }
-  .error-msg { color: var(--danger); font-size: 14px; margin-top: 12px; min-height: 20px; }
+  .req { color: var(--kt-red); }
+  .hint { font-size: 13px; color: var(--kt-gray); margin-top: 8px; }
+  .error-msg { color: var(--kt-red); font-size: 14px; margin-top: 12px; min-height: 20px; font-weight: 400; }
   .btn-submit { width: 100%; font-size: 17px; padding: 16px; margin-top: 8px; }
   .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
 
   .success {
-    display: none; background: var(--accent-soft); border: 1px solid var(--accent);
-    border-radius: var(--radius-lg); padding: 32px; text-align: left;
+    display: none; background: #f0f9fd; border: 1px solid var(--kt-light);
+    border-radius: 6px; padding: 34px;
   }
-  .success h3 { font-family: var(--font-display); font-size: 24px; color: var(--accent-dark); margin-bottom: 8px; }
-  .success p { color: var(--ink-soft); }
-  .success .summary { background: #fff; border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-top: 16px; font-size: 14px; }
+  .success h3 { font-family: var(--font-head); font-size: 24px; color: var(--kt-dark); margin-bottom: 8px; }
+  .success p { color: var(--kt-ink); }
+  .success .summary { background: #fff; border: 1px solid var(--kt-border); border-radius: var(--radius); padding: 16px; margin-top: 16px; font-size: 14px; }
 
-  /* Direktkontakt */
-  .direct { padding: 64px 0; }
-  .direct h2 { font-family: var(--font-display); font-size: 30px; margin-bottom: 24px; }
+  /* ===== Kontakt ===== */
+  .direct { padding: 60px 0; }
+  .direct h2 { font-family: var(--font-head); font-weight: 700; font-size: 30px; color: var(--kt-dark); margin-bottom: 24px; }
   .direct-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .person { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+  .person { border: 1px solid var(--kt-border); border-radius: 6px; padding: 24px; background: #fff; }
   .person .avatar {
-    width: 72px; height: 72px; border-radius: 50%; background: var(--surface-2);
-    border: 2px dashed var(--metal); display: flex; align-items: center; justify-content: center;
-    color: var(--metal); font-size: 12px; text-align: center; margin-bottom: 14px; line-height: 1.2;
+    width: 72px; height: 72px; border-radius: 50%; background: #eef2f6;
+    border: 2px dashed var(--kt-mid); display: flex; align-items: center; justify-content: center;
+    color: var(--kt-mid); font-size: 12px; text-align: center; margin-bottom: 14px; line-height: 1.2;
   }
-  .person .name { font-weight: 700; font-size: 16px; }
-  .person .role { color: var(--muted); font-size: 14px; margin-bottom: 10px; }
-  .person a { display: block; font-size: 14px; }
+  .person .name { font-family: var(--font-head); font-weight: 700; font-size: 16px; color: var(--kt-dark); }
+  .person .role { color: var(--kt-gray); font-size: 14px; margin-bottom: 10px; }
+  .person a { display: block; font-size: 14px; color: var(--kt-dark); }
+  .person a:hover { color: var(--kt-light); }
 
-  footer { background: var(--ink); color: #b9bdc2; padding: 40px 0 48px; font-size: 13px; }
-  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 32px; }
-  footer h4 { color: #f5f3ef; font-size: 14px; margin-bottom: 10px; letter-spacing: 0.5px; text-transform: uppercase; }
+  /* ===== Footer ===== */
+  footer { background: var(--kt-dark); color: #cfe0ee; padding: 44px 0 40px; font-size: 13px; }
+  footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+  footer h4 { color: #fff; font-family: var(--font-head); font-weight: 700; font-size: 15px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px; }
   footer p { margin-bottom: 6px; }
-  footer a { color: #b9bdc2; }
-  .legal { margin-top: 32px; padding-top: 16px; border-top: 1px solid #343a41; color: #6d7278; font-size: 12px; }
+  footer a { color: #cfe0ee; }
+  footer a:hover { color: #fff; }
+  footer .logo-img { height: 40px; width: auto; margin-bottom: 14px; opacity: .95; }
+  .legal { margin-top: 32px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.15); color: #8aa3b8; font-size: 12px; }
 
-  @media (max-width: 860px) {
-    .hero .wrap { grid-template-columns: 1fr; padding-top: 48px; padding-bottom: 48px; }
-    .hero-art { display: none; }
-    .facts-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 900px) {
+    nav.main { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; padding-top: 40px; padding-bottom: 40px; }
+    .hero-img { order: -1; }
+    .facts-grid, .galerie-grid { grid-template-columns: 1fr 1fr; }
     .paket-grid { grid-template-columns: 1fr; }
     .opts { grid-template-columns: 1fr; }
     .grid-2 { grid-template-columns: 1fr; }
     .direct-grid { grid-template-columns: 1fr; }
-    footer .cols { grid-template-columns: 1fr; }
-    .header-cta { display: none; }
+    footer .cols { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .facts-grid, .galerie-grid, footer .cols { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="brand">
-      <div class="logo">KOMPO<span>therm</span></div>
-      <div class="tagline">Aluminium-Haustüren der Extraklasse</div>
+  <div class="topbar">
+    <div class="wrap">
+      <span>Hartwig &amp; Führer GmbH &amp; Co. KG · Industriegebiet Sürenheide · 33415 Verl</span>
+      <div class="right">
+        <a href="tel:+4952467040">☎ +49 5246 704-0</a>
+        <a href="https://www.kompotherm.de/">Zur Website</a>
+      </div>
     </div>
-    <div class="header-cta">Direkt anrufen: <strong>+49 5246 704-0</strong></div>
+  </div>
+  <div class="header-inner">
+    <a class="logo" href="#"><img src="assets/kt_logo.svg" alt="KOMPOtherm"></a>
+    <nav class="main">
+      <a href="https://www.kompotherm.de/produkte">Produkte</a>
+      <a href="https://www.kompotherm.de/galerien">Galerien</a>
+      <a href="https://www.kompotherm.de/kataloge">Kataloge</a>
+      <a href="https://www.kompotherm.de/unternehmen">Unternehmen</a>
+      <a href="https://www.kompotherm.de/kontakt">Kontakt</a>
+    </nav>
+    <div class="header-tools">
+      <a class="partner-login" href="#">Partner werden</a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="price-flag">Aktionsmodell ab 3.380&nbsp;€ + 19% USt.</span>
-      <h1>Vertriebspartner in <em>Ihrer Region</em> gesucht.</h1>
+      <span class="eyebrow">Exklusiv für Fachhandel &amp; Handwerk</span>
+      <h1>Vertriebspartner in <span>Ihrer Region</span> gesucht.</h1>
       <p class="lead">
-        Sie führen Fenster- und Türen-Handwerk und suchen ein Aluminium-Türprogramm,
-        das sich verkauft? Werden Sie KOMPOtherm-Partner und profitieren Sie vom
-        Händlerrabatt, eigener Belieferung und Ausstellungsservice.
+        Sie führen einen Fenster- und Türenbetrieb und suchen ein Aluminium-Türprogramm,
+        das sich verkauft? Werden Sie KOMPOtherm®-Partner und profitieren Sie von
+        Händlerkonditionen, eigener Belieferung und Ausstellungsservice.
       </p>
+      <div class="price-flag">Aktionsmodell ab 3.380 € + 19% USt.</div>
       <div class="cta-row">
         <a class="btn btn-primary" href="#anfrage">Jetzt Händlerrabatt erfragen</a>
-        <a class="btn btn-ghost" href="#kontakt">Direkt anrufen</a>
+        <a class="btn btn-outline" href="#kontakt">Direkt anrufen</a>
       </div>
     </div>
-    <div class="hero-art">
-      <div class="door"><span>Produktbild<br>Platzhalter</span></div>
-      <div class="note">Türbild wird durch echtes Produktfoto ersetzt.</div>
+    <div class="hero-img">
+      <img src="assets/tuer_1_opt.jpg" alt="KOMPOtherm Haustür">
+      <div class="badge">KOMPOtherm® Aluminium-Haustüren</div>
     </div>
   </div>
 </section>
 
 <section class="facts">
   <div class="wrap">
-    <h2>Warum KOMPOtherm? <em>Made in Germany, seit 1984.</em></h2>
+    <h2>Qualität, die sich verkauft</h2>
+    <p class="sub">Made in Germany — seit 40 Jahren Aluminium-Haustüren der Extraklasse.</p>
     <div class="facts-grid">
       <div class="fact"><div class="k">Pulverbeschichtung</div><div class="v">Oberfläche in Industriequalität, witterungsbeständig.</div></div>
       <div class="fact"><div class="k">18 Standardfarben</div><div class="v">Breites Farbspektrum ab Lager, ohne Sonderzuschlag.</div></div>
       <div class="fact"><div class="k">Füllungs- &amp; Sonderbau</div><div class="v">Individuelle Füllungen und Sonderanfertigungen möglich.</div></div>
       <div class="fact"><div class="k">Verschiedene Profilsysteme</div><div class="v">Für jede Einbausituation das passende System.</div></div>
-      <div class="fact"><div class="k">Eigener Fuhrpark seit 1984</div><div class="v">Zuverlässige, planbare Anlieferung zu Ihnen.</div></div>
+      <div class="fact"><div class="k">Eigener Fuhrpark</div><div class="v">Zuverlässige, planbare Anlieferung zu Ihnen.</div></div>
       <div class="fact"><div class="k">Ausstellungsservice</div><div class="v">Unterstützung für Ihre Verkaufs- und Musterausstellung.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="galerie">
+  <div class="wrap">
+    <h2>Ein Blick auf unser Programm</h2>
+    <p class="sub">Eine Auswahl aktueller Modelle — das komplette Programm finden Sie in den Katalogen.</p>
+    <div class="galerie-grid">
+      <div class="galerie-item"><img src="assets/tuer_1_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
+      <div class="galerie-item"><img src="assets/tuer_2_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
+      <div class="galerie-item"><img src="assets/tuer_3_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
+      <div class="galerie-item"><img src="assets/tuer_4_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
+      <div class="galerie-item"><img src="assets/tuer_5_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
+      <div class="galerie-item"><img src="assets/tuer_6_opt.jpg" alt="Haustür Modell"><div class="cap">Modellreihe</div></div>
     </div>
   </div>
 </section>
 
 <section class="paket">
   <div class="wrap paket-grid">
-    <div class="paket-card">
+    <div class="paket-card dark">
       <h3>Ausstattung im Preis enthalten</h3>
       <ul>
         <li>Beidseitig flügelüberdeckende Ausführung</li>
@@ -244,19 +327,17 @@
         <li>Innendrücker Edelstahl</li>
         <li>Außenhandhabe Edelstahl</li>
       </ul>
-      <div class="price">3.380&nbsp;€ <small>empf. VK + 19% USt.</small></div>
+      <div class="price">3.380 € <small>empf. VK + 19% USt.</small></div>
     </div>
-    <div class="paket-card">
+    <div class="paket-card light">
       <h3>Ihre Marge als Partner</h3>
-      <p style="color:#c9cdd2; margin-bottom:14px;">
-        Als Vertriebspartner erhalten Sie einen festen Händlerrabatt auf die
-        empfohlene Verkaufspreise. Konkrete Konditionen klären wir direkt mit Ihnen.
-      </p>
       <ul>
-        <li>Feste Händlerkonditionen</li>
+        <li>Feste Händlerkonditionen auf die empf. VK</li>
         <li>Direkte Ansprechpartner im Vertrieb</li>
         <li>Angebotsabteilung für Ihre Anfragen</li>
+        <li>Schulungs- und Verkaufsunterlagen</li>
       </ul>
+      <div class="price">Händlerrabatt <small>auf Anfrage</small></div>
     </div>
   </div>
 </section>
@@ -357,7 +438,7 @@
   <div class="wrap">
     <div class="cols">
       <div>
-        <h4>KOMPOtherm</h4>
+        <img class="logo-img" src="assets/kt_logo_white.svg" alt="KOMPOtherm">
         <p>Aluminium-Haustüren der Extraklasse</p>
         <p>Hartwig &amp; Führer GmbH &amp; Co. KG</p>
         <p>Industriegebiet Sürenheide<br>Berensweg 10 – 12<br>D-33415 Verl</p>
@@ -367,17 +448,24 @@
         <p>Zentrale: +49 (0) 5246 704-0</p>
         <p>Fax: +49 (0) 5246 704-44</p>
         <p><a href="mailto:kontakt@kompotherm.de">kontakt@kompotherm.de</a></p>
-        <p><a href="https://www.kompotherm.de">www.kompotherm.de</a></p>
+        <p><a href="https://www.kompotherm.de/">www.kompotherm.de</a></p>
       </div>
       <div>
-        <h4>Social</h4>
-        <p><a href="https://www.instagram.com/kompotherm_haustueren/">instagram.com/kompotherm_haustueren</a></p>
-        <p><a href="https://www.instagram.com/kompo.schulze">instagram.com/kompo.schulze</a></p>
-        <p><a href="https://youtu.be/0I9944Q35TI">YouTube</a></p>
+        <h4>Produkte</h4>
+        <p><a href="https://www.kompotherm.de/produkte/haustueren">Haustüren</a></p>
+        <p><a href="https://www.kompotherm.de/produkte/haustueren/modellreihen">Modellreihen</a></p>
+        <p><a href="https://www.kompotherm.de/produkte/haustueren/tuerenfinder">Türenfinder</a></p>
+        <p><a href="https://www.kompotherm.de/produkte/haustueren/trends/kompotherm-tuerschutzbrief">Türschutzbrief</a></p>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <p><a href="https://www.kompotherm.de/impressum">Impressum</a></p>
+        <p><a href="https://www.kompotherm.de/datenschutz">Datenschutz</a></p>
+        <p><a href="https://www.kompotherm.de/anfahrt">Anfahrt</a></p>
       </div>
     </div>
     <div class="legal">
-      Prototyp — nicht produktiv. QR-Code-/Link-Ziel im Flyer („www. link …“) ist noch offen und wird durch die finale Landingpage-URL ersetzt.
+      Prototyp — nicht produktiv. Landingpage für Vertriebspartner-Akquise (Demo). QR-Code-/Link-Ziel im Flyer („www. link …“) ist noch offen.
     </div>
   </div>
 </footer>
@@ -388,9 +476,7 @@
     var err = document.getElementById('error-msg');
     var success = document.getElementById('success');
     var summary = document.getElementById('summary');
-    var submitBtn = document.getElementById('submit-btn');
 
-    // Checkbox-Optik
     var opts = document.querySelectorAll('.opt input');
     opts.forEach(function (c) {
       c.addEventListener('change', function () {
@@ -427,7 +513,6 @@
         return;
       }
 
-      // Prototyp: Erfolgsansicht mit Zusammenfassung (kein Backend).
       var zeilen = [
         ['Firma', document.getElementById('firma').value.trim()],
         ['Ansprechpartner', document.getElementById('name').value.trim()],
