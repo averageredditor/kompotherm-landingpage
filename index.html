@@ -110,7 +110,7 @@
   .hero-img { position: relative; overflow: hidden; border-radius: 6px; aspect-ratio: 4/3; }
   .hero-img .slide {
     position: absolute; inset: 0; opacity: 0;
-    animation: herofade 30s ease-in-out infinite;
+    animation: herofade 50s ease-in-out infinite;
   }
   .hero-img .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .hero-img .slide:nth-child(1) { animation-delay: 0s; }
@@ -119,11 +119,15 @@
   .hero-img .slide:nth-child(4) { animation-delay: 15s; }
   .hero-img .slide:nth-child(5) { animation-delay: 20s; }
   .hero-img .slide:nth-child(6) { animation-delay: 25s; }
+  .hero-img .slide:nth-child(7) { animation-delay: 30s; }
+  .hero-img .slide:nth-child(8) { animation-delay: 35s; }
+  .hero-img .slide:nth-child(9) { animation-delay: 40s; }
+  .hero-img .slide:nth-child(10) { animation-delay: 45s; }
   @keyframes herofade {
     0%       { opacity: 0; }
-    3%       { opacity: 1; }
-    16.666%  { opacity: 1; }
-    19.666%  { opacity: 0; }
+    2%       { opacity: 1; }
+    10%      { opacity: 1; }
+    12%      { opacity: 0; }
     100%     { opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -303,12 +307,16 @@
       </div>
     </div>
     <div class="hero-img">
-      <div class="slide"><img src="assets/tuer_1_opt.jpg" alt="KOMPOtherm Haustür"></div>
-      <div class="slide"><img src="assets/tuer_2_opt.jpg" alt="KOMPOtherm Haustür"></div>
-      <div class="slide"><img src="assets/tuer_3_opt.jpg" alt="KOMPOtherm Haustür"></div>
-      <div class="slide"><img src="assets/tuer_4_opt.jpg" alt="KOMPOtherm Haustür"></div>
-      <div class="slide"><img src="assets/tuer_5_opt.jpg" alt="KOMPOtherm Haustür"></div>
-      <div class="slide"><img src="assets/tuer_6_opt.jpg" alt="KOMPOtherm Haustür"></div>
+      <div class="slide"><img src="assets/slides/slide_01.jpg" alt="KOMPOtherm Haustür klassisch"></div>
+      <div class="slide"><img src="assets/slides/slide_02.jpg" alt="KOMPOtherm Haustür klassisch"></div>
+      <div class="slide"><img src="assets/slides/slide_03.jpg" alt="KOMPOtherm Haustür klassisch"></div>
+      <div class="slide"><img src="assets/slides/slide_04.jpg" alt="KOMPOtherm Haustür klassisch"></div>
+      <div class="slide"><img src="assets/slides/slide_05.jpg" alt="KOMPOtherm Haustür klassisch"></div>
+      <div class="slide"><img src="assets/slides/slide_06.jpg" alt="KOMPOtherm Haustür modern"></div>
+      <div class="slide"><img src="assets/slides/slide_07.jpg" alt="KOMPOtherm Haustür modern"></div>
+      <div class="slide"><img src="assets/slides/slide_08.jpg" alt="KOMPOtherm Haustür modern"></div>
+      <div class="slide"><img src="assets/slides/slide_09.jpg" alt="KOMPOtherm Haustür modern"></div>
+      <div class="slide"><img src="assets/slides/slide_10.jpg" alt="KOMPOtherm Haustür modern"></div>
       <div class="badge">KOMPOtherm® Aluminium-Haustüren</div>
     </div>
   </div>
