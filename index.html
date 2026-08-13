@@ -43,6 +43,43 @@
   a:hover { color: var(--kt-light); }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
+  /* ===== Fullscreen-Background-Slideshow ===== */
+  .bg-slideshow {
+    position: fixed; inset: 0; z-index: 0; overflow: hidden;
+    background: var(--kt-dark-2);
+  }
+  .bg-slideshow .slide {
+    position: absolute; inset: 0; opacity: 0;
+    animation: bgfade 50s ease-in-out infinite;
+  }
+  .bg-slideshow .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bg-slideshow .slide:nth-child(1)  { animation-delay: 0s; }
+  .bg-slideshow .slide:nth-child(2)  { animation-delay: 5s; }
+  .bg-slideshow .slide:nth-child(3)  { animation-delay: 10s; }
+  .bg-slideshow .slide:nth-child(4)  { animation-delay: 15s; }
+  .bg-slideshow .slide:nth-child(5)  { animation-delay: 20s; }
+  .bg-slideshow .slide:nth-child(6)  { animation-delay: 25s; }
+  .bg-slideshow .slide:nth-child(7)  { animation-delay: 30s; }
+  .bg-slideshow .slide:nth-child(8)  { animation-delay: 35s; }
+  .bg-slideshow .slide:nth-child(9)  { animation-delay: 40s; }
+  .bg-slideshow .slide:nth-child(10) { animation-delay: 45s; }
+  @keyframes bgfade {
+    0%       { opacity: 0; }
+    2%       { opacity: 1; }
+    10%      { opacity: 1; }
+    12%      { opacity: 0; }
+    100%     { opacity: 0; }
+  }
+  /* Abdunkeln für Lesbarkeit + dezenter Blauton */
+  .bg-slideshow::after {
+    content: ""; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(0,26,47,0.72) 0%, rgba(0,51,94,0.78) 50%, rgba(0,26,47,0.85) 100%);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .bg-slideshow .slide { animation: none; opacity: 0; }
+    .bg-slideshow .slide:nth-child(1) { opacity: 1; }
+  }
+
   /* ===== Glass-Widget Basis ===== */
   .glass {
     background: var(--glass-bg);
@@ -92,7 +129,7 @@
 
   /* ===== Hero ===== */
   .hero { padding: 72px 0; position: relative; }
-  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+  .hero .wrap { max-width: 900px; }
   .hero-panel { padding: 40px; }
   .hero .eyebrow {
     display: inline-block; background: rgba(0,177,235,0.18); color: var(--kt-light);
@@ -123,34 +160,6 @@
   .btn-primary:hover { background: #9e242c; color: #fff; }
   .btn-outline { background: rgba(255,255,255,0.06); color: #fff; border-color: rgba(255,255,255,0.45); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
   .btn-outline:hover { border-color: var(--kt-light); color: var(--kt-light); }
-
-  /* Hero-Glass-Karte rechts (Statik/Mini-Slideshow im Glass) */
-  .hero-img { position: relative; overflow: hidden; aspect-ratio: 4/3; border: 1px solid var(--glass-border); }
-  .hero-img .slide { position: absolute; inset: 0; opacity: 0; animation: herofade 50s ease-in-out infinite; }
-  .hero-img .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .hero-img .slide:nth-child(1)  { animation-delay: 0s; }
-  .hero-img .slide:nth-child(2)  { animation-delay: 5s; }
-  .hero-img .slide:nth-child(3)  { animation-delay: 10s; }
-  .hero-img .slide:nth-child(4)  { animation-delay: 15s; }
-  .hero-img .slide:nth-child(5)  { animation-delay: 20s; }
-  .hero-img .slide:nth-child(6)  { animation-delay: 25s; }
-  .hero-img .slide:nth-child(7)  { animation-delay: 30s; }
-  .hero-img .slide:nth-child(8)  { animation-delay: 35s; }
-  .hero-img .slide:nth-child(9)  { animation-delay: 40s; }
-  .hero-img .slide:nth-child(10) { animation-delay: 45s; }
-  @keyframes herofade {
-    0% { opacity: 0; } 2% { opacity: 1; } 10% { opacity: 1; } 12% { opacity: 0; } 100% { opacity: 0; }
-  }
-  .hero-img .badge {
-    position: absolute; bottom: 16px; left: 16px; background: rgba(0,26,47,0.6); color: #fff;
-    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-    font-family: var(--font-head); font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.2); z-index: 5;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-img .slide { animation: none; opacity: 0; }
-    .hero-img .slide:nth-child(1) { opacity: 1; }
-  }
 
   /* ===== Sektionen ===== */
   section { position: relative; }
@@ -250,9 +259,7 @@
 
   @media (max-width: 900px) {
     nav.main { display: none; }
-    .hero .wrap { grid-template-columns: 1fr; padding: 0; }
     .hero { padding: 40px 0; }
-    .hero-img { order: -1; }
     .facts-grid, .galerie-grid { grid-template-columns: 1fr 1fr; }
     .paket-grid { grid-template-columns: 1fr; }
     .opts { grid-template-columns: 1fr; }
@@ -266,6 +273,20 @@
 </style>
 </head>
 <body>
+
+<!-- Fullscreen Background Slideshow -->
+<div class="bg-slideshow" aria-hidden="true">
+  <div class="slide"><img src="assets/slides/slide_01.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_02.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_03.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_04.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_05.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_06.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_07.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_08.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_09.jpg" alt=""></div>
+  <div class="slide"><img src="assets/slides/slide_10.jpg" alt=""></div>
+</div>
 
 <header>
   <div class="topbar">
@@ -307,19 +328,6 @@
         <a class="btn btn-primary" href="#anfrage">Jetzt Händlerrabatt erfragen</a>
         <a class="btn btn-outline" href="#kontakt">Direkt anrufen</a>
       </div>
-    </div>
-    <div class="hero-img glass">
-      <div class="slide"><img src="assets/slides/slide_01.jpg" alt="KOMPOtherm Haustür klassisch"></div>
-      <div class="slide"><img src="assets/slides/slide_02.jpg" alt="KOMPOtherm Haustür klassisch"></div>
-      <div class="slide"><img src="assets/slides/slide_03.jpg" alt="KOMPOtherm Haustür klassisch"></div>
-      <div class="slide"><img src="assets/slides/slide_04.jpg" alt="KOMPOtherm Haustür klassisch"></div>
-      <div class="slide"><img src="assets/slides/slide_05.jpg" alt="KOMPOtherm Haustür klassisch"></div>
-      <div class="slide"><img src="assets/slides/slide_06.jpg" alt="KOMPOtherm Haustür modern"></div>
-      <div class="slide"><img src="assets/slides/slide_07.jpg" alt="KOMPOtherm Haustür modern"></div>
-      <div class="slide"><img src="assets/slides/slide_08.jpg" alt="KOMPOtherm Haustür modern"></div>
-      <div class="slide"><img src="assets/slides/slide_09.jpg" alt="KOMPOtherm Haustür modern"></div>
-      <div class="slide"><img src="assets/slides/slide_10.jpg" alt="KOMPOtherm Haustür modern"></div>
-      <div class="badge">KOMPOtherm® Aluminium-Haustüren</div>
     </div>
   </div>
 </section>
